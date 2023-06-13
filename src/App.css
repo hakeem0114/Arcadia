@@ -1,0 +1,3 @@
+.heroText{
+    @apply text-3xl font-light border-lime-300 underline-offset-1 hover:bg-violet-400 hover:font-bold
+}
