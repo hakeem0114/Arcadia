@@ -1,5 +1,11 @@
 import './App.css'
-// import './index.css'
+
+
+//React component imports
+import Intro from './pages/Home'
+import Home from './pages/Home'
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -7,7 +13,9 @@ function App() {
     <h1
       className='heroText'
     >
-      Arcadia
+      <Header/>
+      <Home/>
+      <Footer/>
     </h1>
   )
 }
