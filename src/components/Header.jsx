@@ -27,13 +27,14 @@ function Header() {
 
 
   return (
-    <nav className='w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 z-50 flex justify-between ' >
+    <nav id='header' className='w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 z-50 flex justify-between ' >
           <div className='w-4/5 m-auto flex justify-between items-center' >
               <div className="text-3xl font-bold text-gray-900 dark:text-white transform transition duration-200 hover:scale-110 hover:cursor-pointer">
                 {/* <img src={headerLogo} alt="headerLogo" className='w-24'/> */}
                 Arcadia
               </div>
-
+              
+    
               <div >
                   <ul className='hidden md:visible md:flex flex-row gap-16 ' >
                  

@@ -1,13 +1,13 @@
 import '../App.css'
 
 //Component Imports
-import Carousel from '../components/carousel'
+import MainCarousel from '../components/carousel'
 
 function Home() {
 
   return (
     <div>
-      <Carousel/>
+      <MainCarousel/>
       home
     </div>
   )

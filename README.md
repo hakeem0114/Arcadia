@@ -5,7 +5,7 @@ A one-stop-shop for the stylish wear
 
 ## Libraries Used
 
-React Responsive
+React Carousel
 ```http
   Used this for condition mobile rendering.
   https://www.npmjs.com/package/react-responsive
@@ -26,9 +26,11 @@ TailwindCss
 ## ERD Diagrams
 
 Introduction Page
-```http
+```
   Although my project "MySymposium" worked perfectly on localhost, the client-side rendering after deploying the backend node.js server was occasionally slow. 
   Making on introduction page to let the end-user wait for the store to load is something I felt was need in my next full-stack application (this project).
+
+  Get loading priority & renders the store before the welcome icon pops up
 ```
 
 
