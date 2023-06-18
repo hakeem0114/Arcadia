@@ -1,13 +1,15 @@
 import '../App.css'
 
+//Component Imports
+import Carousel from '../components/carousel'
+
 function Home() {
 
   return (
-    <h1
-      className='heroText'
-    >
-     HOME
-    </h1>
+    <div>
+      <Carousel/>
+      home
+    </div>
   )
 }
 

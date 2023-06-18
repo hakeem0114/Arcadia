@@ -1,15 +1,18 @@
 //Import all images here & export to any file
 
-import  linkedIn  from "react.svg";
-import git  from "react.svg";
-import payment from "react.svg";
-import googleLogo from "react.svg";
-import  shopCart from "react.svg";
+
+import  linkedIn  from "./linkedIn.png";
+import git  from './github.png';
+import payment from "./payment.png";
+import googleLogo from "./google.png";
+import  shopCart from "./shopCart.png";
+import headerLogo from './hero.png'
 
 export{
     linkedIn, 
     git,
     payment, 
     googleLogo, 
-    shopCart
+    shopCart,
+    headerLogo
 }

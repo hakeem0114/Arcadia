@@ -1,3 +1,7 @@
-.heroText{
+/* .heroText{
     @apply text-3xl font-light border-lime-300 underline-offset-1 hover:bg-violet-400 hover:font-bold
+} */
+.circle {
+    @apply rounded-full border-2 flex p-1 relative
+
 }
