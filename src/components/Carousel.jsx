@@ -1,7 +1,7 @@
 import '../App.css'
 
 //React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 //Asset Imports  [Only images from Unsplash for backgrounds & wallpapers]
@@ -20,8 +20,16 @@ import { BsChevronDoubleLeft,BsChevronDoubleRight  } from 'react-icons/bs';
 function MainCarousel() {
 
   const carouselData = [image1, image2, image3, image4]
-
   const [currentIndex, setImageIndex] = useState(2)
+
+  
+  //Handle autoslider
+  useEffect(() => {
+    const timer = setTimeout(() => {
+     handleNextSlide()
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [currentIndex]);
 
   //If its on the first index slide, goto last index slide,else goto prevCurrentIndex (currentIndex-1)
   const handlePrevSlide = ()=>{
@@ -32,20 +40,20 @@ function MainCarousel() {
   }
   
   //If its on the last index slide, goto 1st index slide,else goto nextCurrentIndex (currentIndex+1)
-  const handleNextSlide = ()=>{
+  function handleNextSlide(){
       const currentSlide = currentIndex === carouselData.length-1 //To reset carousel
       const newSlide =  currentSlide ? 0 : currentIndex +1
       setImageIndex(newSlide)
   }
   return(
-    <div className='w-full h-[800px] m-auto relative z-0'>
+    <div id='carousel' className='w-full h-[800px] m-auto relative z-0 transition-all duration-1000'>
         <div 
           style={{backgroundImage: `url(${carouselData[currentIndex]})`}}
-          className='w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-500 delay-1000 ease-in-out' 
+          className='w-full h-full bg-cover bg-no-repeat bg-center flex transition-all delay-1000 duration-1000 ease-in-out animate-fade' 
         >  </div>
 
         <div className='absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
-                        hover: transition-transform duration-200  hover:border-2  hover:border-white
+                        hover: transition-transform duration-300  hover:border-2  hover:border-white
         '>
             <BsChevronDoubleLeft
               size={50}
@@ -54,7 +62,7 @@ function MainCarousel() {
         </div>
 
         <div className='absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
-                        hover: transition-transformduration-200 hover:border-2 hover:border-white
+                        hover: transition transform duration-300 hover:border-2 hover:border-white
         '>
             <BsChevronDoubleRight
               size={50}
@@ -70,8 +78,9 @@ function MainCarousel() {
           <div>
             <h1 className='
                font-bold text-2xl
-            '>SIGNUP NOW FOR A 10% DISCOUNT</h1>
-            <i className='underline underline-offset-4 text-amber-400 transition duration-200 hover:scale-150 hover:cursor-pointer'><a href="#products">Check out the new arrivals</a></i>
+               transition duration-300 hover:text-stone-500 hover:cursor-pointer
+            '><a href="#user"></a> SIGNUP NOW FOR A 10% DISCOUNT</h1>
+            <i className='underline underline-offset-4 text-amber-400 transition duration-300 hover:cursor-pointer'><a href="#products">Check out the new arrivals</a></i>
 
           </div>
         </div>

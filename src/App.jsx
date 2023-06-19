@@ -10,13 +10,13 @@ import Footer from './components/Footer'
 function App() {
 
   return (
-    <h1
+    <div
       className='heroText'
     >
       <Header/>
       <Home/>
       <Footer/>
-    </h1>
+    </div>
   )
 }
 

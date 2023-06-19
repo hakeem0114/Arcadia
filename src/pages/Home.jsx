@@ -1,14 +1,16 @@
 import '../App.css'
 
 //Component Imports
-import MainCarousel from '../components/carousel'
+import MainCarousel from '../components/Carousel'
+import Products from '../components/Products'
+
 
 function Home() {
 
   return (
     <div>
       <MainCarousel/>
-      home
+      <Products/>
     </div>
   )
 }

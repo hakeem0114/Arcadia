@@ -30,9 +30,8 @@ function Header() {
   return (
     <nav id='header' className='w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 relative z-10 flex justify-between ' >
           <div className='w-4/5 m-auto flex justify-between items-center' >
-              <div className="text-3xl font-bold text-gray-900 dark:text-white transform transition duration-200 hover:scale-110 hover:cursor-pointer">
-                {/* <img src={headerLogo} alt="headerLogo" className='w-24'/> */}
-                Arcadia
+              <div className=" text-3xl font-bold text-gray-900 dark:text-white transform transition duration-200 hover:scale-110 hover:cursor-pointer">
+                Arcadia <span className='line-through'>|||</span> 
               </div>
               
     
