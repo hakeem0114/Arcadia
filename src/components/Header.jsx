@@ -21,13 +21,14 @@ function Header() {
 
   function handleClick(){
     setDropDown((prevDropDown)=>!prevDropDown)
+    console.log(isDropDown)
   }
 
   //Handle navigation & useDispatch from redux
 
 
   return (
-    <nav id='header' className='w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 z-50 flex justify-between ' >
+    <nav id='header' className='w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 relative z-10 flex justify-between ' >
           <div className='w-4/5 m-auto flex justify-between items-center' >
               <div className="text-3xl font-bold text-gray-900 dark:text-white transform transition duration-200 hover:scale-110 hover:cursor-pointer">
                 {/* <img src={headerLogo} alt="headerLogo" className='w-24'/> */}
@@ -46,14 +47,14 @@ function Header() {
                       <li className='transform transition duration-200 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
                   </ul>
 
-                  <div className='transform transition duration-200 hover:scale-110 hover:cursor-pointer md:hidden' onClick={handleClick}> 
-                    <IoIosArrowDropdown size={30}/> 
+                  <div className='transform transition duration-200 hover:scale-110 hover:cursor-pointer md:hidden' > 
+                    <IoIosArrowDropdown onClick={handleClick} size={30}/> 
                   </div>              
               </div>
           </div>
           {isDropDown &&
-                                <ul className='visible transform transition duration-200 hover:cursor-pointer  
-                                                 fixed left top-20 w-[30%] h-[40%] border-r border-r-gray-900 bg-gray-700 rounded-br-full
+                                <ul className='visible absolute z-50 transform transition duration-200 hover:cursor-pointer  
+                                                  left top-20 w-[30%] h-[320px] border-r border-r-gray-900 bg-gray-700 rounded-br-full
                                                  flex items-center flex-col gap-7
                                                  md:hidden 
                                                 ' >

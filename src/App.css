@@ -5,3 +5,18 @@
     @apply rounded-full border-2 flex p-1 relative
 
 }
+
+.banner{
+    color: white;
+    padding: 20px;
+    border-radius: 1px;
+    text-align: left;
+    background-color: rgb(0,0,0,0.4);
+    position: absolute;
+    top: 46%;
+    margin: 0 auto;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

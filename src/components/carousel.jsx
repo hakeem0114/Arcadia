@@ -38,7 +38,7 @@ function MainCarousel() {
       setImageIndex(newSlide)
   }
   return(
-    <div className='w-full h-[800px] m-auto relative'>
+    <div className='w-full h-[800px] m-auto relative z-0'>
         <div 
           style={{backgroundImage: `url(${carouselData[currentIndex]})`}}
           className='w-full h-full bg-cover bg-no-repeat bg-center transition-transform duration-500 delay-1000 ease-in-out' 
@@ -63,12 +63,16 @@ function MainCarousel() {
         </div>
 
         <div
-          className=' absolute text-white text-center p-7 rounded-sm bg-slate-400  w-3/12 h-1/5 top-2/4 left-24'
+          
+          className='banner  text-center md:left-48 drop-shadow-2xl rounded-br-3xl' 
+          // className='opacity-60  w-3/12 h-2/6 top-2/4 left-24'
         >
           <div>
-            <h1>NEW ITEMS</h1>
-            <h1>Summer Sale Is Here!</h1>
-            <p> <a id='products' href="#"> Shop Here</a> </p> 
+            <h1 className='
+               font-bold text-2xl
+            '>SIGNUP NOW FOR A 10% DISCOUNT</h1>
+            <i className='underline underline-offset-4 text-amber-400 transition duration-200 hover:scale-150 hover:cursor-pointer'><a href="#products">Check out the new arrivals</a></i>
+
           </div>
         </div>
 
