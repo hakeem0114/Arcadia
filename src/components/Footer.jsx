@@ -19,9 +19,13 @@ function Footer() {
       id='Footer' 
       className='bg-black text-[#949494] py-20 text-sm'
     >
-      <div className='max-w-screen-xl mx-auto grid grid-cols-4'>
+      <div className='
+      max-w-screen-xl grid grid-cols-1/2 justify-center items-center gap-14 mx-auto 
+      md:grid-cols-2 md:p-20 lg:grid-cols-4 lg:mx-auto
+
+      '>
           {/***1st col: Website Info***/}
-          <div className='flex flex-col gap-7 '>
+          <div className='flex flex-col'>
               <div className=" text-3xl font-bold text-white dark:text-white transform transition duration-200 hover:scale-[1.01] hover:cursor-pointer">
                 Arcadia <span className='line-through'>|||</span> 
               </div>

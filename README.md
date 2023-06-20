@@ -3,23 +3,27 @@
 
 A one-stop-shop for the stylish wear
 
-## Libraries Used
+## Packages & Libraries Used
 
 React Carousel
-```http
+```
   Used this for condition mobile rendering.
   https://www.npmjs.com/package/react-responsive
 ```
 React Icons
-```http
+```
     dddf
 ```
 
+React Router 
+```
+https://reactrouter.com/en/main/utils/create-routes-from-elements
+```
 
 ## Technologies Used
 
 TailwindCss
-```http
+```
   
 ```
 
