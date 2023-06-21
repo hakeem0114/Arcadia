@@ -29,7 +29,7 @@ function MainCarousel() {
      handleNextSlide()
     }, 5000);
     return () => clearTimeout(timer);
-  }, [currentIndex]);
+  }, []);
 
   //If its on the first index slide, goto last index slide,else goto prevCurrentIndex (currentIndex-1)
   const handlePrevSlide = ()=>{
@@ -49,7 +49,7 @@ function MainCarousel() {
     <div id='carousel' className='w-full h-[800px] m-auto relative z-0 transition-all duration-1000'>
         <div 
           style={{backgroundImage: `url(${carouselData[currentIndex]})`}}
-          className='w-full h-full bg-cover bg-no-repeat bg-center flex transition-all delay-1000 duration-1000 ease-in-out animate-fade' 
+          className='w-full h-full bg-cover bg-no-repeat bg-center flex transition-all delay-300 duration-1000 ease-in-out animate-fade' 
         >  </div>
 
         <div className='absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 rounded-full py-2 bg-black/25 text-white cursor-pointer

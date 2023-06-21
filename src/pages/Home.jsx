@@ -6,20 +6,31 @@ import MainCarousel from '../components/Carousel'
 import Products from '../components/Products'
 
 //React Imports
-//useEffect to render api data
+import { useEffect,useState } from 'react'
 
 //Router Imports
 import { useLoaderData } from 'react-router-dom'
 
 function Home() {
 
-  // const cartData = useLoaderData() //Get loader data from route
-  // console.log(cartData)
+  //Carrying api data to /home path on load
+  const cartData = useLoaderData() //Get loader data from route
+  
+  //Render data on home
+  const [products, setProducts] = useState([])
+
+  useEffect(()=>{
+    setProducts(cartData)
+  },[cartData]) //Rerender when cardData api is called
+  
+  // console.log(products)
   
   return (
     <div>
       <MainCarousel/>
-      <Products/>
+      <Products
+        products= {products}
+      />
     </div>
   )
 }

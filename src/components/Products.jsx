@@ -3,8 +3,8 @@ import '../App.css'
 //Component Imports
 import ProductCard from './ProductCard'
 
-function Products() {
-
+function Products(props) {
+//  console.log(props.products)
   return (
       <div id='products' className='py-10'>
             <div className='flex flex-col items-center gap-4'>

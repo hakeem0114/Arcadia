@@ -14,6 +14,13 @@ import { MdOutlineSupportAgent} from 'react-icons/md';
 
 function Footer() {
 
+  function handleNewsLetterSubmit(event){
+    event.preventDefault()
+
+    //Connect to email.js & mailchimp to send a fake newsletter with discount code
+    
+  }
+
   return (
     <div 
       id='Footer' 
@@ -73,21 +80,23 @@ function Footer() {
           <div className=''>
               <h2 className='text-2xl font-semibold text-white mb-4 md:flex justify-center'>Join Our Newsletter</h2>
 
-              <div className='flex flex-col justify-center'>
-                  <input 
-                      type="name" name="nme" id="name" placeholder='Name' 
-                      className='text-center bg-transparent border px-4 py-4 text-sm'
-                  />
-                  <input 
-                      type="email" name="email" id="email" placeholder='email' 
-                      className='text-center bg-transparent border px-4 py-4 text-sm'
-                  />
-                  <button 
-                      className='py-2 text-center text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-white active:border-orange-300 '>
-                    Subscribe to newsletter
-                    {/* Link email.js & mailchimp newsletter here using  onSubmit={handleSubmit} */}
-                  </button>
-             </div>
+              
+              <form className='flex flex-col justify-center' onSubmit={handleNewsLetterSubmit}>
+                      <input 
+                          type="name" name="nme" id="name" placeholder='Name' 
+                          className='text-center bg-transparent border px-4 py-4 text-sm'
+                      />
+                      <input 
+                          type="email" name="email" id="email" placeholder='email' 
+                          className='text-center bg-transparent border px-4 py-4 text-sm'
+                      />
+                      <button 
+                          className='py-2 text-center text-sm border text-white border-t-0 hover:bg-gray-900 active:bg-white active:text-white active:border-orange-300 '>
+                        Subscribe to newsletter
+                        {/* Link email.js & mailchimp newsletter here using  onSubmit={handleSubmit} */}
+                      </button>
+              </form>
+             
           </div>
 
       </div>
