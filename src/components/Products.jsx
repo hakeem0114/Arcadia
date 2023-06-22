@@ -4,9 +4,9 @@ import '../App.css'
 import ProductCard from './ProductCard'
 
 function Products(props) {
-//  console.log(props.products)
+
   return (
-      <div id='products' className='py-10'>
+      <div id='products' className='py-10 grid justify-center items-center text-center'>
             <div className='flex flex-col items-center gap-4'>
                 <h1 className='text-2xl bg-black text-white py-2 w-80 text-center rounded-br-2xl'>
                 ALL FEATURED ITEMS
@@ -17,9 +17,19 @@ function Products(props) {
                 It will provide a safe alternative for you, our clients, to browse and now shop some of our collections.
                 </p>
             </div>
-            
-            <div className='max-w-screen-xl mx-auto'>
-                <ProductCard/>
+
+            {/*** MAP PRODUCT USING PRODUCT CARDS***/}
+            <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-2 gap-20
+                            md:grid-cols-4
+            '>
+                {
+                    props.products.map((item)=>(
+                        <ProductCard
+                            key = {item._id}
+                            product = {item}
+                        />
+                    ))
+                }
             </div>
 
 

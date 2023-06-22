@@ -29,6 +29,7 @@ function Home() {
     <div>
       <MainCarousel/>
       <Products
+        key = {products._id} 
         products= {products}
       />
     </div>

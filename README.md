@@ -3,13 +3,8 @@
 
 A one-stop-shop for the stylish wear
 
-## Packages & Libraries Used
+## Packages, Libraries & APIs Used
 
-React Carousel
-```
-  Used this for condition mobile rendering.
-  https://www.npmjs.com/package/react-responsive
-```
 React Icons
 ```
     dddf
@@ -19,6 +14,11 @@ React Router
 ```
 https://reactrouter.com/en/main/utils/create-routes-from-elements
 ```
+React Router 
+```
+https://fakestoreapi.reactbd.com/
+```
+
 
 ## Technologies Used
 
