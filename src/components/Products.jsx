@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import '../App.css'
 
 //Component Imports
@@ -19,8 +20,8 @@ function Products(props) {
             </div>
 
             {/*** MAP PRODUCT USING PRODUCT CARDS***/}
-            <div className='max-w-screen-xl mx-auto py-10 grid grid-cols-2 gap-20
-                            md:grid-cols-4
+            <div className='max-w-screen-xl ml-5 mr-5 py-10 grid grid-cols-2 gap-5
+                            md:grid-cols-3  lg:grid-cols-4
             '>
                 {
                     props.products.map((item)=>(

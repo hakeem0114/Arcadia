@@ -24,10 +24,10 @@ function Footer() {
   return (
     <div 
       id='Footer' 
-      className='bg-black text-[#949494] py-20 text-sm'
+      className='bg-black text-[#949494] text-sm'
     >
       <div className='
-      max-w-screen-xl grid grid-cols-1/2 justify-center items-center gap-14 mx-auto 
+      max-w-screen-xl py-4 grid grid-cols-1/2 justify-center items-center gap-14 mx-auto 
       md:grid-cols-2 md:p-20 lg:grid-cols-4 lg:mx-auto
 
       '>

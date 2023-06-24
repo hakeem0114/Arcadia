@@ -26,7 +26,7 @@ function Home() {
   // console.log(products)
   
   return (
-    <div>
+    <div id='home'>
       <MainCarousel/>
       <Products
         key = {products._id} 
