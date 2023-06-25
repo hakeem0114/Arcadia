@@ -75,13 +75,13 @@ function Product() {
                                   
                                   <div className=' flex items-center text-sm gap-4 font-semibold'>
                                     <button 
-                                      onClick={()=>setproductQTY(productQTY > 0 || productQTY == 0  ?productQTY=productQTY+1:productQTY=0)}
+                                      onClick={()=>setproductQTY(productQTY+1)}
                                       className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
                                                   hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                       '>+</button>
                                       <span>{productQTY}</span>
                                     <button
-                                      onClick={()=>setproductQTY(productQTY > 0 || productQTY == 0   ?productQTY=productQTY-1:productQTY=0)}
+                                      onClick={()=>setproductQTY(productQTY==0 ? (productQTY=0):productQTY-1)}
                                       className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
                                       hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                     '>-</button>
