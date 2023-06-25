@@ -1,16 +1,39 @@
 /* eslint-disable react/prop-types */
 import '../App.css'
 
+
+//React router Imports
+import { useNavigate } from 'react-router-dom';
+
+//React Component Imports
+// import Product from './Product';
+
 //React Icon Imports
 import { FaCartArrowDown} from 'react-icons/fa';
 
+
+
+
 function ProductCard(props) {
 
-  // console.log(props.product)
+  //String manipulation for professional hyperlinks (remove spaces)
+  const _id = props.product.title
+  const idString = _id.toLowerCase().split(" ").join("")
+
+  //Navigation
+  const navigate = useNavigate()
+
+  const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract
+    
+    navigate(`/product/${idString}`,{
+      state:{ item: props.product }
+    })
+  }
+
   return (
-    <div className='group'>
+    <div className='group' >
         {/**PRODUCT IMAGE**/}
-        <div className='z-10 w-full h-96 cursor-pointer overflow-hidden '>
+        <div onClick={gotoProduct} className='z-10 w-full h-96 cursor-pointer overflow-hidden '>
           <img 
             src={props.product.image} 
             alt="image"

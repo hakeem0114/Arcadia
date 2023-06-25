@@ -6,6 +6,7 @@ import './App.css'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import Product from './components/Product'
 
 //Page Imports
 import Cart from './pages/Cart'
@@ -27,6 +28,7 @@ import {
 import productData from './api/productData'
 
 
+
 /********* RENDERING *********/
 
 //Parent router component
@@ -34,6 +36,7 @@ function PageLayout(){
     return(
         <div>
               <Header/>
+              <ScrollRestoration/>
               <Outlet/>
               <Footer/>
         </div>
@@ -43,9 +46,12 @@ function PageLayout(){
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={< PageLayout/>} >
+
         <Route  path='/' element={<Home/>} loader={productData} />
 
-        <Route  path='cart' element={<Cart/>} />
+        <Route  path='/cart' element={<Cart/>} />
+        {/* <Route path='/product' element={<Product/>} /> */}
+        <Route path='/product/:id' element={<Product/>} />
     </Route>
   )
 )
