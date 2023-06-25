@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div
-      className=''
+      className='scroll-smooth'
     >
       <RouterProvider
         router={router}

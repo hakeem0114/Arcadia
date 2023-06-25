@@ -79,7 +79,7 @@ function ProductCard(props) {
                         Sale
                     </p>
                   )}
-        </div>
+            </div>
         </div>
 
     </div>
