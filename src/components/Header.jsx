@@ -34,6 +34,7 @@ function Header() {
  // console.log(productData)//QTY is the 4th index, i=[3]
   //const cartQuantity = useSelector((state)=>state.arcadia.productData[0].quantity)
   // console.log(cartQuantity)
+  
   const totalCartQuantity = useSelector((state)=>state.arcadia.productData).length
   console.log(totalCartQuantity)
   

@@ -29,7 +29,8 @@ function ProductCard(props) {
   //Redux
   const dispatch = useDispatch()
   const addProduct =()=>{
-    // console.log('dfdf')
+    // The cart icon should only add 1 type of item at a time.
+    //Must open the product or checkout to increase or decrease the QTY
     dispatch(addToCart({
       _id: props.product._id,
       title: props.product.title,
@@ -41,6 +42,7 @@ function ProductCard(props) {
     }))
   }
 
+  //Navigate: React Router
   const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract
     
     navigate(`/product/${idString}`,{

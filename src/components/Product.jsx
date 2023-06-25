@@ -10,28 +10,41 @@ import { useLocation} from 'react-router-dom';
 import {BsFillCartPlusFill}  from 'react-icons/bs';
 
 //Redux Imports
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {addToCart} from '../states/arcadiaSlice'
+
 
 function Product() {
 
-  //Redux
+  //Redux to update productData intial State array
+  const dispatch = useDispatch()
+  const addProduct = ()=>{
+    //Takes in the updated productQTY to replace (1) from /home
+    dispatch(addToCart({
+      _id: productDetails._id,
+      title: productDetails.title,
+      image: productDetails.image,
+      price: productDetails.price,
+      quantity: productQTY,
+      description: productDetails.description,
+    }))
+  }
+
+
   let [productQTY, setproductQTY] = useState(1)
- // const setproductQTY = useSelector((state)=>state.arcadia.productData.quantity)
 
   //React Router
   const location = useLocation() //Returns location object of current URL with any options from useNavigate()
 
   const [productDetails, setProductDetails] = useState({})
-  
-  // let details = location.state.item
-  // console.log(details.price)
 
   //Render the data from location state & update it to local state(productDetails,)
   useEffect(()=>{
     setProductDetails(location.state.item)
   },[]) // eslint-disable-next-line react-hooks/exhaustive-deps
   //console.log(productDetails.price)
+
+
   return (
       <div className=''>
         {productDetails &&
@@ -88,7 +101,10 @@ function Product() {
                                   </div>
                               </div>
 
-                             <button className='rounded-br-3xl md:w-72 flex justify-center gap-2 md:gap-5 bg-black text-white py-3 px-6 active:bg gray-800  hover:bg-gray-700 hover:text-white cursor-pointer'>
+                             <button 
+                                onClick={addProduct}
+                              className='rounded-br-3xl md:w-72 flex justify-center gap-2 md:gap-5 bg-black text-white py-3 px-6 active:bg gray-800  hover:bg-gray-700 hover:text-white cursor-pointer
+                            '>
                                 <span>Add to Cart</span> <span><BsFillCartPlusFill size={30}/></span>
                               </button>
                           </div>
