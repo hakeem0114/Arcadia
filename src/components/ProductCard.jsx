@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import '../App.css'
 
-
 //React router Imports
 import { useNavigate } from 'react-router-dom';
+
+//Redux Imports
+import { useDispatch } from 'react-redux';
+import {addToCart} from '../states/arcadiaSlice'
 
 //React Component Imports
 // import Product from './Product';
@@ -22,6 +25,21 @@ function ProductCard(props) {
 
   //Navigation
   const navigate = useNavigate()
+
+  //Redux
+  const dispatch = useDispatch()
+  const addProduct =()=>{
+    // console.log('dfdf')
+    dispatch(addToCart({
+      _id: props.product._id,
+      title: props.product.title,
+      image: props.product.image,
+      price: props.product.price,
+      quantity: 1,
+      description: props.product.description,
+
+    }))
+  }
 
   const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract
     
@@ -64,7 +82,9 @@ function ProductCard(props) {
 
                     
                     {/**On hover, show checkout & make it dissapear**/}
-                   <p className='absolute z-20  text-gray-600 hover:text-gray-900
+                   <p  
+                      onClick={addProduct} 
+                      className='absolute z-20  text-gray-600 hover:text-gray-900
                                   flex items-center gap-1 transform translate-y-6 
                                   group-hover:translate-y-0 transition-transform cursor-pointer duration-500
                    '>

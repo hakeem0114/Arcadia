@@ -9,15 +9,22 @@ import { useLocation} from 'react-router-dom';
 //Icon Imports
 import {BsFillCartPlusFill}  from 'react-icons/bs';
 
-
+//Redux Imports
+import { useDispatch, useSelector } from 'react-redux';
+import {addToCart} from '../states/arcadiaSlice'
 
 function Product() {
+
+  //Redux
+  let [productQTY, setproductQTY] = useState(1)
+ // const setproductQTY = useSelector((state)=>state.arcadia.productData.quantity)
+
+  //React Router
   const location = useLocation() //Returns location object of current URL with any options from useNavigate()
 
   const [productDetails, setProductDetails] = useState({})
   
   // let details = location.state.item
-
   // console.log(details.price)
 
   //Render the data from location state & update it to local state(productDetails,)
@@ -68,11 +75,13 @@ function Product() {
                                   
                                   <div className=' flex items-center text-sm gap-4 font-semibold'>
                                     <button 
+                                      onClick={()=>setproductQTY(productQTY > 0 || productQTY == 0  ?productQTY=productQTY+1:productQTY=0)}
                                       className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
                                                   hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                       '>+</button>
-                                      <span>{1}</span>
+                                      <span>{productQTY}</span>
                                     <button
+                                      onClick={()=>setproductQTY(productQTY > 0 || productQTY == 0   ?productQTY=productQTY-1:productQTY=0)}
                                       className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
                                       hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                     '>-</button>

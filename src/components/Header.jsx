@@ -6,6 +6,9 @@ import { useState } from 'react';
 //import { useMediaQuery } from 'react-responsive'
 import { Link} from 'react-router-dom';
 
+//Redux Imports
+import { useSelector} from 'react-redux'
+//import { addToCart } from '../states/arcadiaSlice';
 
 //Image Imports
 //import {headerLogo} from '../assets/assets'
@@ -23,9 +26,16 @@ function Header() {
 
   function handleClick(){
     setDropDown((prevDropDown)=>!prevDropDown)
-    console.log(isDropDown)
+   // console.log(isDropDown)
   }
 
+  //Redux
+  //const productData = useSelector((state)=> state.arcadia.productData) //productData= [] as redux initial state
+ // console.log(productData)//QTY is the 4th index, i=[3]
+  //const cartQuantity = useSelector((state)=>state.arcadia.productData[0].quantity)
+  // console.log(cartQuantity)
+  const totalCartQuantity = useSelector((state)=>state.arcadia.productData).length
+  console.log(totalCartQuantity)
   
 
 
@@ -45,7 +55,7 @@ function Header() {
                       <li  id='home' className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosHome size={30} /> </li>
                       <li className='flex justify-center transform transition duration-300 hover:scale-110 hover:cursor-pointer'>
                          <AiOutlineShoppingCart size={30}/> 
-                         <div className='circle'>21</div>
+                         <div className='circle'>{totalCartQuantity}</div>
                       </li>
                       <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
                   </ul>
