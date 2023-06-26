@@ -10,17 +10,18 @@ React Icons
     dddf
 ```
 
-React Router 
+React Router
 ```
-https://reactrouter.com/en/main/utils/create-routes-from-elements
+Router to manage client routes
 ```
-React Router 
+Store Data
 ```
 https://fakestoreapi.reactbd.com/
 ```
-Redux Tookit & Redux Devtools 
+Redux Tookit, Persist & Devtools 
 ```
 Rather than setting up & connecting the state management and then praying that it works, redux devtools is as critical as the Postman & chrome devtools.
+Persist to store cache (redux store payload-> states -> initialValues & action to mutate with action in reducers) on user's local storage. Keep states on browser refresh
 ```
 
 React Toastify

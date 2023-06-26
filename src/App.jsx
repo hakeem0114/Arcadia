@@ -4,12 +4,13 @@ import './App.css'
 //React component imports
 //import Intro from './pages/Intro'
 import Header from './components/Header'
-import Home from './pages/Home'
 import Footer from './components/Footer'
 import Product from './components/Product'
 
 //Page Imports
+import Home from './pages/Home'
 import Cart from './pages/Cart'
+import User from './pages/User'
 
 //React Router Imports
 import {
@@ -22,7 +23,7 @@ import {
 } from "react-router-dom"; 
 ////Outlet renders child routes. ScrollRestoration to use the browser default resto on refresh 
 ////Loader gives aync data to route element before it renders
-
+///Scroll Restoration restores default browser behaviour. Scroll to component before <Scroll Restorarion/>
 
 //Api Imports
 import productData from './api/productData'
@@ -50,8 +51,8 @@ const router = createBrowserRouter(
         <Route  path='/' element={<Home/>} loader={productData} />
 
         <Route  path='/cart' element={<Cart/>} />
-        {/* <Route path='/product' element={<Product/>} /> */}
         <Route path='/product/:id' element={<Product/>} />
+        <Route path='/user' element={<User/>} />
     </Route>
   )
 )

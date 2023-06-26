@@ -63,9 +63,11 @@ function Header() {
                           </li>
                       </Link>
 
+                      <Link to='/user' className='transform duration-1000'>
+                          <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
+                      </Link>
 
-                      <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
-                  </ul>
+                    </ul>
 
                   <div className='transform transition duration-300 hover:scale-110 hover:cursor-pointer md:hidden' > 
                     <IoIosArrowDropdown onClick={handleClick} size={30}/> 
@@ -87,8 +89,9 @@ function Header() {
                                             <li id='checkout' className='transform transition duration-300 hover:scale-110  hover:text-slate-200 hover:cursor-pointer'> <AiOutlineShoppingCart size={50}/> </li>
                                         </Link>
 
-                        
+                                        <Link to='/user' className='transform duration-1000'>
                                         <li id='user' className='transform transition duration-300 hover:scale-110  hover:text-slate-200 hover:cursor-pointer'> <IoIosContact size={50}/> </li>
+                                        </Link>
                                 </ul>
           }
 

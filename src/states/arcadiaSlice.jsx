@@ -16,8 +16,7 @@ export const arcadiaSlice = createSlice({
             
             //If redux payloads exits or has a duplicate, 
             if(cartItem){ //Exists so update .quantity property in producData array
-                cartItem.quantity++ 
-                // += action.payload.quantity
+                cartItem.quantity += action.payload.quantity            
             }else{ //Does not exist so push new product into array
                 state.productData.push(action.payload) ;
             }
@@ -42,7 +41,7 @@ export const arcadiaSlice = createSlice({
         },
 
         deleteFromCart:(state, action)=>{
-             state.productData.filter((item)=> item._id !== action.payload)
+            state.productData = state.productData.filter((item)=> item._id !== action.payload)
         },
         resetCart:(state)=>{
             state.productData = []
