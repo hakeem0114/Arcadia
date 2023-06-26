@@ -13,23 +13,28 @@ import {BsFillCartPlusFill}  from 'react-icons/bs';
 import { useDispatch} from 'react-redux';
 import {addToCart} from '../states/arcadiaSlice'
 
+//React Toastify for notifications Imports
+import { ToastContainer, toast } from 'react-toastify';
+
 
 function Product() {
 
-  //Redux to update productData intial State array
+  //Redux to update productData intial State array onClick
   const dispatch = useDispatch()
   const addProduct = ()=>{
     //Takes in the updated productQTY to replace (1) from /home
-    dispatch(addToCart({
-      _id: productDetails._id,
-      title: productDetails.title,
-      image: productDetails.image,
-      price: productDetails.price,
-      quantity: productQTY,
-      description: productDetails.description,
-    }))
+    dispatch(
+          addToCart({
+            _id: productDetails._id,
+            title: productDetails.title,
+            image: productDetails.image,
+            price: productDetails.price,
+            quantity: productQTY,
+            description: productDetails.description,
+          })
+    ) & 
+          toast('Added')
   }
-
 
   let [productQTY, setproductQTY] = useState(1)
 
@@ -113,8 +118,19 @@ function Product() {
                       </div>
       
                  </div>
-
         }
+          <ToastContainer
+            position="top-right"
+            autoClose={500}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
 
       </div>
       

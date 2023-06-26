@@ -23,6 +23,11 @@ Redux Tookit & Redux Devtools
 Rather than setting up & connecting the state management and then praying that it works, redux devtools is as critical as the Postman & chrome devtools.
 ```
 
+React Toastify
+```
+Handle notifications
+```
+
 ## Technologies Used
 
 TailwindCss

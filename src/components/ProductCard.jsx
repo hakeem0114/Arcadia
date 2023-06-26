@@ -14,6 +14,8 @@ import {addToCart} from '../states/arcadiaSlice'
 //React Icon Imports
 import { FaCartArrowDown} from 'react-icons/fa';
 
+//React Toastify for notifications Imports
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -31,20 +33,21 @@ function ProductCard(props) {
   const addProduct =()=>{
     // The cart icon should only add 1 type of item at a time.
     //Must open the product or checkout to increase or decrease the QTY
-    dispatch(addToCart({
-      _id: props.product._id,
-      title: props.product.title,
-      image: props.product.image,
-      price: props.product.price,
-      quantity: 1,
-      description: props.product.description,
-
-    }))
+    dispatch(
+        addToCart({
+          _id: props.product._id,
+          title: props.product.title,
+          image: props.product.image,
+          price: props.product.price,
+          quantity: 1,
+          description: props.product.description,
+        })
+    ) & 
+        toast('Added')
   }
 
-  //Navigate: React Router
-  const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract
-    
+  //Navigate: React Router, gotoProductPage
+  const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract 
     navigate(`/product/${idString}`,{
       state:{ item: props.product }
     })
@@ -104,6 +107,18 @@ function ProductCard(props) {
             </div>
         </div>
 
+        <ToastContainer
+            position="top-right"
+            autoClose={500}
+            hideProgressBar={true}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
     </div>
   )
 }

@@ -36,7 +36,7 @@ function Header() {
   // console.log(cartQuantity)
   
   const totalCartQuantity = useSelector((state)=>state.arcadia.productData).length
-  console.log(totalCartQuantity)
+  //console.log(totalCartQuantity)
   
 
 
@@ -52,12 +52,18 @@ function Header() {
     
               <div >
                   <ul className='hidden md:visible md:flex flex-row gap-16 ' >
-                 
-                      <li  id='home' className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosHome size={30} /> </li>
-                      <li className='flex justify-center transform transition duration-300 hover:scale-110 hover:cursor-pointer'>
-                         <AiOutlineShoppingCart size={30}/> 
-                         <div className='circle'>{totalCartQuantity}</div>
-                      </li>
+                      <Link to='/' className='transform duration-1000'>
+                           <li  id='home' className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosHome size={30} /> </li>
+                      </Link>
+                      
+                      <Link to='/cart' className='transform duration-1000'>
+                          <li className='flex justify-center transform transition duration-300 hover:scale-110 hover:cursor-pointer'>
+                            <AiOutlineShoppingCart size={30}/> 
+                            <div className='circle'>{totalCartQuantity}</div>
+                          </li>
+                      </Link>
+
+
                       <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
                   </ul>
 
@@ -72,11 +78,21 @@ function Header() {
                                                  flex items-center flex-col gap-7  
                                                  md:hidden 
                                                 ' >
-                                        <li id='home' className='mt-7 transform transition duration-300  hover:scale-110 hover:text-slate-200 hover:cursor-pointer'> <IoIosHome size={50} /> </li>
-                                        <li id='checkout' className='transform transition duration-300 hover:scale-110  hover:text-slate-200 hover:cursor-pointer'> <AiOutlineShoppingCart size={50}/> </li>
+
+                                        <Link to='/' className='transform duration-1000'>
+                                            <li id='home' className='mt-7 transform transition duration-300  hover:scale-110 hover:text-slate-200 hover:cursor-pointer'> <IoIosHome size={50} /> </li>
+                                        </Link>
+
+                                        <Link to='/cart' className='transform duration-1000'>
+                                            <li id='checkout' className='transform transition duration-300 hover:scale-110  hover:text-slate-200 hover:cursor-pointer'> <AiOutlineShoppingCart size={50}/> </li>
+                                        </Link>
+
+                        
                                         <li id='user' className='transform transition duration-300 hover:scale-110  hover:text-slate-200 hover:cursor-pointer'> <IoIosContact size={50}/> </li>
                                 </ul>
           }
+
+
     </nav>
   )
 }
