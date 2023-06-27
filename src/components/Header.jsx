@@ -3,7 +3,6 @@ import '../App.css'
 
 //React imports
 import { useState } from 'react';
-//import { useMediaQuery } from 'react-responsive'
 import { Link} from 'react-router-dom';
 
 //Redux Imports
@@ -11,7 +10,6 @@ import { useSelector} from 'react-redux'
 //import { addToCart } from '../states/arcadiaSlice';
 
 //Image Imports
-//import {headerLogo} from '../assets/assets'
 import { IoIosHome } from 'react-icons/io';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { IoIosArrowDropdown } from 'react-icons/io';
@@ -26,17 +24,13 @@ function Header() {
 
   function handleClick(){
     setDropDown((prevDropDown)=>!prevDropDown)
-   // console.log(isDropDown)
   }
 
   //Redux
-  //const productData = useSelector((state)=> state.arcadia.productData) //productData= [] as redux initial state
- // console.log(productData)//QTY is the 4th index, i=[3]
-  //const cartQuantity = useSelector((state)=>state.arcadia.productData[0].quantity)
-  // console.log(cartQuantity)
-  
+
   const totalCartQuantity = useSelector((state)=>state.arcadia.productData).length
-  //console.log(totalCartQuantity)
+  const userData = useSelector((state)=>state.arcadia.userInfo)
+
   
 
 
@@ -63,9 +57,15 @@ function Header() {
                           </li>
                       </Link>
 
-                      <Link to='/user' className='transform duration-1000'>
+                      <Link to='/user' className='transform duration-1000 flex gap-5'>
                           <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
+                          <p className=' font-medium w-auto underline underline-offset-4 hover:text-amber-600 '>
+                            {userData &&
+                                <p>{userData.name}</p>
+                            }
+                          </p>
                       </Link>
+
 
                     </ul>
 

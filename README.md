@@ -29,6 +29,11 @@ React Toastify
 Handle notifications
 ```
 
+Firebase
+```
+    Stores user info for authentication & authorization
+```
+
 ## Technologies Used
 
 TailwindCss

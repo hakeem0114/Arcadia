@@ -10,6 +10,8 @@ export const arcadiaSlice = createSlice({
     name: 'arcadia',
     initialState,
     reducers: {
+
+        /*****PRODUCT ITEM REDUCERS******/
         addToCart:(state, action)=>{
             //Filter & return items with exisiting in productData array
             const cartItem = state.productData.find((item)=> item._id === action.payload._id)
@@ -21,7 +23,6 @@ export const arcadiaSlice = createSlice({
                 state.productData.push(action.payload) ;
             }
         },
-
         incrementQTY: (state, action)=>{
             //Filter & return items with exisiting in productData array
             const cartItem = state.productData.find((item)=> item._id === action.payload._id)
@@ -30,7 +31,6 @@ export const arcadiaSlice = createSlice({
                 cartItem.quantity++
             }
         },
-
         decrementQTY: (state, action)=>{
             //Filter & return items with exisiting in productData array
             const cartItem = state.productData.find((item)=> item._id === action.payload._id)
@@ -39,12 +39,19 @@ export const arcadiaSlice = createSlice({
                 cartItem.quantity--
             }
         },
-
         deleteFromCart:(state, action)=>{
             state.productData = state.productData.filter((item)=> item._id !== action.payload)
         },
         resetCart:(state)=>{
             state.productData = []
+        },
+
+        /*****USER BACKEND REDUCERS******/
+        addUser:(state, action)=>{
+            state.userInfo = action.payload
+        },
+        removeUser:(state, action)=>{
+            state.userInfo = null
         }
     },
 })
@@ -56,7 +63,9 @@ export const {
     deleteFromCart,
     resetCart,
     incrementQTY,
-    decrementQTY
+    decrementQTY,
+    addUser,
+    removeUser
 } = arcadiaSlice.actions
 
 export default arcadiaSlice.reducer
