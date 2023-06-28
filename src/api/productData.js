@@ -1,4 +1,4 @@
-//Fake items from fakestoreapi.com
+//GET Fake items from fakestoreapi.com
 
 export default async function productData(){
     const products = await fetch('https://fakestoreapiserver.reactbd.com/products')

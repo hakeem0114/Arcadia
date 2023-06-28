@@ -23,13 +23,16 @@ import { ToastContainer, toast } from 'react-toastify';
 //Stripe Imports
 import StripeCheckout from 'react-stripe-checkout';
 
+//Axios Imports (to fix the fetch() api errors)
+import axios from 'axios';
+
 
 function Cart() {
 
   //Redux Data Imports
   const productItem = useSelector((state)=>state.arcadia.productData)
   const userData = useSelector((state)=> state.arcadia.userInfo)
-  console.log(userData)
+ // console.log(userData)
 
   //Stripe Pay
   const [stripePay, setStripePay] = useState(false)
@@ -60,6 +63,40 @@ function Cart() {
       toast.error('Please sign in to Checkout')
     }
   }
+
+  //Stripe API POST to sever for authentication
+  const stripePayment = async (token)=>{
+    // try{
+    //   await fetch('http://localhost:3000/payment', {
+    //     method: 'POST',
+    //     headers: {
+    //       Accept: 'application.json',
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //       Authorization: "Bearer " + "pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ",
+    //     },
+    //     body:{
+    //       token: token,
+    //       amount: finalPrice*100,
+    //     } ,
+    //     cache: 'default'
+    //   })
+    // }
+    // catch(error){
+    //   console.log(error)
+    // }
+    try{
+        await axios.post('http://localhost:3000/payment',{
+          amount: finalPrice*100,
+            token: token,
+
+        })
+    }
+  catch(error){
+        console.log(error)
+    }
+
+  }
+  
 
 
   return (
@@ -117,9 +154,8 @@ function Cart() {
                           {stripePay &&
                             <div className='w-full flex mt-6 items-start justify-center'>
                               <StripeCheckout
-                                 // token={this.onToken}
-                                  stripeKey="pk_live_51NNpYuL3c9Qh3QyccYiCHTTsa8vEN4MzcgJ0txoPwzkw92wp4PAkQtikq19UwMUpqFDwkN7zJE0x4GzJZJkJG14m00uHvyPRQr"
-
+                                 token={stripePayment}
+                                  stripeKey='pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ'
                                   label='Pay to Arcadia'
                                   name='Arcadia E-Pay'
                                   description={`Payment amount = $${finalPrice}`}
@@ -127,8 +163,6 @@ function Cart() {
                                   currency="CAD"
 
                                   amount={(finalPrice)*100}
-                                  bitcoin='true'
-                                  alipay= 'true'
 
                                   shippingAddress
                                   allowRememberMe
