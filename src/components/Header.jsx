@@ -59,11 +59,11 @@ function Header() {
 
                       <Link to='/user' className='transform duration-1000 flex gap-5'>
                           <li className='transform transition duration-300 hover:scale-110 hover:cursor-pointer'> <IoIosContact size={30}/> </li>
-                          <p className=' font-medium w-auto underline underline-offset-4 hover:text-amber-600 '>
+                          <div className=' font-medium w-auto underline underline-offset-4 hover:text-amber-600 '>
                             {userData &&
                                 <p>{userData.name}</p>
                             }
-                          </p>
+                          </div>
                       </Link>
 
 

@@ -16,13 +16,30 @@ import CartItems from '../components/CartItems';
 //React Icon Imports
 import { HiOutlineArrowLeft} from 'react-icons/hi';
 
+//React Toastify for notifications Imports
+import { ToastContainer, toast } from 'react-toastify';
+
+
+//Stripe Imports
+import StripeCheckout from 'react-stripe-checkout';
+
 
 function Cart() {
 
+  //Redux Data Imports
   const productItem = useSelector((state)=>state.arcadia.productData)
+  const userData = useSelector((state)=> state.arcadia.userInfo)
+  console.log(userData)
 
-      //States
+  //Stripe Pay
+  const [stripePay, setStripePay] = useState(false)
+
+
+   //Pricing
       let [totalPrice, setTotalPrice] = useState(0)
+      const tax = 0.13
+      const addOnTax = 1.13
+      let finalPrice = (addOnTax * totalPrice).toFixed(3)
 
     //Total Price
     useEffect(()=>{
@@ -32,7 +49,19 @@ function Cart() {
       })
       setTotalPrice(sum)
   },[productItem])
+
   
+  //Checkout
+  const handleCheckout =()=>{
+    if(userData){
+     setStripePay(true)
+     // toast.success('Signed In')
+    }else{
+      toast.error('Please sign in to Checkout')
+    }
+  }
+
+
   return (
       <div>
         {productItem.length>0 && (
@@ -58,7 +87,7 @@ function Cart() {
 
                             <p className='flex items-center gap-4 text-lg'>
                               Subtotal 
-                              <span className='font-bold text-lg'>${(totalPrice).toFixed(3)}</span>
+                              <span className='font-bold text-lg'>${(totalPrice).toFixed(2)}</span>
                             </p>
 
                             <p className='flex items-start gap-4 text-lg'>
@@ -71,15 +100,58 @@ function Cart() {
                             <p className='flex items-start gap-4 text-lg'>
                                 GST/HST 
                                 <span>
-                                 <i> {(0.13*totalPrice).toFixed(3)}</i>
+                                 <i> {(tax*totalPrice).toFixed(3)}</i>
                                 </span>
                             </p> 
                         </div>
-                        <p className='font-semibold text-lg flex justify-between mt-6'>
-                          Total   <span className='text-xl font-bold'>${(1.13*totalPrice).toFixed(3)}</span>
-                        </p>
-                        <button className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'>Continue Checkout</button>
+
+                          <p className='font-semibold text-lg flex justify-between mt-6'>
+                            Total   <span className='text-xl font-bold'>${finalPrice}</span>
+                          </p>
+
+                          <button 
+                            onClick={handleCheckout}
+                            className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'
+                          >Continue Checkout</button>
+
+                          {stripePay &&
+                            <div className='w-full flex mt-6 items-start justify-center'>
+                              <StripeCheckout
+                                 // token={this.onToken}
+                                  stripeKey="pk_live_51NNpYuL3c9Qh3QyccYiCHTTsa8vEN4MzcgJ0txoPwzkw92wp4PAkQtikq19UwMUpqFDwkN7zJE0x4GzJZJkJG14m00uHvyPRQr"
+
+                                  label='Pay to Arcadia'
+                                  name='Arcadia E-Pay'
+                                  description={`Payment amount = $${finalPrice}`}
+                                  email={userData.email}
+                                  currency="CAD"
+
+                                  amount={(finalPrice)*100}
+                                  bitcoin='true'
+                                  alipay= 'true'
+
+                                  shippingAddress
+                                  allowRememberMe
+
+                                  
+                              />
+                            </div>
+
+                          }
                     </div>
+
+                    <ToastContainer
+                      position="top-right"
+                      autoClose={500}
+                      hideProgressBar={true}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="dark"
+                    />
                 </div>
               ) 
           }

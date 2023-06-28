@@ -34,6 +34,11 @@ Firebase
     Stores user info for authentication & authorization
 ```
 
+react-stripe-checkout
+```
+    Makes it easy to steal people's money
+```
+
 ## Technologies Used
 
 TailwindCss

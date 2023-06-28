@@ -205,7 +205,7 @@ function User() {
                     <div className='flex flex-col gap-5'>
                         <div>
                                 <div className='max-h-screen m-10 flex flex-col justify-center items-center gap-5'>
-                                        <p  className='text-lg md:text-xl lg:text-2xl mt-10 uppercase font-bold text-orange-600 text-center'>Sign Out Successful. <br/> Check out more exciting products BELOW!</p>
+                                        <p  className='text-lg md:text-xl lg:text-2xl mt-10 uppercase font-bold text-orange-600 text-center'>Checkout our newsletter for a 10% discount code. <br/>Or view our catalogue BELOW!</p>
                                         <Link to='/'>
                                             <button className='text-lg mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'>
                                                 <span> < HiOutlineArrowLeft  size={30}/> </span>
