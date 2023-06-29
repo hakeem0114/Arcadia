@@ -85,8 +85,8 @@ function Cart() {
     //   console.log(error)
     // }
     try{
-        await axios.post('http://localhost:3000/payment',{
-          amount: finalPrice*100,
+        await axios.post('http://localhost:3000/pay',{
+            amount: finalPrice*100,
             token: token,
 
         })
@@ -154,18 +154,23 @@ function Cart() {
                           {stripePay &&
                             <div className='w-full flex mt-6 items-start justify-center'>
                               <StripeCheckout
-                                 token={stripePayment}
+                                 
                                   stripeKey='pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ'
-                                  label='Pay to Arcadia'
+                                  token={stripePayment}
                                   name='Arcadia E-Pay'
+                                  amount={(finalPrice)*100}
+                                  label='Pay to Arcadia'
+
                                   description={`Payment amount = $${finalPrice}`}
                                   email={userData.email}
-                                  currency="CAD"
+                                 // currency="CAD"
 
-                                  amount={(finalPrice)*100}
+                                 
 
-                                  shippingAddress
-                                  allowRememberMe
+                                  
+
+                                  // shippingAddress
+                                  // allowRememberMe
 
                                   
                               />
