@@ -35,9 +35,14 @@ export const arcadiaSlice = createSlice({
             //Filter & return items with exisiting in productData array
             const cartItem = state.productData.find((item)=> item._id === action.payload._id)
             
-            if(cartItem){
+            if(cartItem.quantity <=1 ){ 
+                cartItem.quantity = 1
+            }else{
                 cartItem.quantity--
             }
+            // if(cartItem){
+            //     cartItem.quantity--
+            // }
         },
         deleteFromCart:(state, action)=>{
             state.productData = state.productData.filter((item)=> item._id !== action.payload)

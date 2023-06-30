@@ -57,7 +57,8 @@ function CartItems() {
                                                                 <h2 className='w-52 text-center'>{item.title}</h2>
                                                                 <div className='flex flex-col justify-center items-center'>
                                                                     <h2 className='w-10 text-amber-500'>${item.price}</h2>
-                                                                    <h2 className='w-10'>{(item.price === (item.price * item.quantity))?'':(<>${item.price * item.quantity}</>)}</h2>
+                                                                    {/* {item.quantity>=1?item.quantity:1} */}
+                                                                    <h2 className='w-10'>{(item.quantity>=2)?(<i>${item.price * item.quantity}</i>):''}</h2>
                                                                 </div>
                                     
                                                                 <div className='  w-42 md:w-72 flex items-center justify-center text-gray-500 gap-1 border p-1 md:gap-3 md:p-3'>
@@ -65,30 +66,33 @@ function CartItems() {
                                                                     
                                                                     <div className=' flex items-center text-sm gap-4 font-semibold'>
                                                                         <button 
-                                                                        onClick={()=>dispatch(incrementQTY({
-                                                                            _id: item._id,
-                                                                            title: item.title,
-                                                                            image: item.image,
-                                                                            price: item.price,
-                                                                            quantity: 1,
-                                                                            description: item.description,
-                                                                        }))}
-                                                                        className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
-                                                                                    hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
+                                                                            onClick={()=>dispatch(incrementQTY({
+                                                                                _id: item._id,
+                                                                                title: item.title,
+                                                                                image: item.image,
+                                                                                price: item.price,
+                                                                                quantity: 1,
+                                                                                description: item.description,
+                                                                            }))}
+                                                                            className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
+                                                                                        hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                                                         '>+</button>
-                                                                        <span>{item.quantity>=0?item.quantity:0}</span>
+
+                                                                        <span>{item.quantity>=1?item.quantity:1}</span>
+
                                                                         <button
-                                                                        onClick={()=>dispatch(decrementQTY({
-                                                                            _id: item._id,
-                                                                            title: item.title,
-                                                                            image: item.image,
-                                                                            price: item.price,
-                                                                            quantity: 1,
-                                                                            description: item.description,
-                                                                        }))}
-                                                                        className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
-                                                                        hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
+                                                                            onClick={()=>dispatch(decrementQTY({
+                                                                                _id: item._id,
+                                                                                title: item.title,
+                                                                                image: item.image,
+                                                                                price: item.price,
+                                                                                quantity: 1,
+                                                                                description: item.description,
+                                                                            }))}
+                                                                            className='border h-5 w-5 md:h-12 md:w-11 font-normal text-lg flex items-center justify-center px-2 
+                                                                            hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black active:shadow-md shadow-amber-200
                                                                         '>-</button>
+
                                                                     </div>
                                                                 </div>
                                                             </div>

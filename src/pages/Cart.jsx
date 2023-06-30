@@ -33,6 +33,7 @@ function Cart() {
   const productItem = useSelector((state)=>state.arcadia.productData)
   const userData = useSelector((state)=> state.arcadia.userInfo)
  // console.log(userData)
+ //console.log(productItem[0].price)
 
   //Stripe Pay
   const [stripePay, setStripePay] = useState(false)
@@ -46,13 +47,17 @@ function Cart() {
 
     //Total Price
     useEffect(()=>{
+      setTotalPrice(productItem[0].price)
       let sum = 0
       productItem.map((item)=>{
-          sum += item.quantity * item.price
+          if(item.quantity >=1){
+            sum += item.quantity * item.price
+          }
       })
       setTotalPrice(sum)
+      
   },[productItem])
-
+  //console.log(totalPrice)
   
   //Checkout
   const handleCheckout =()=>{
@@ -85,11 +90,13 @@ function Cart() {
     //   console.log(error)
     // }
     try{
-        await axios.post('http://localhost:3000/pay',{
+        const req = await axios.post('http://localhost:3000/pay',{
             amount: finalPrice*100,
             token: token,
 
         })
+        const res = req.json()
+        console.log(res)
     }
   catch(error){
         console.log(error)
