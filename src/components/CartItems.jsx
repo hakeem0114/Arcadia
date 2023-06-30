@@ -28,8 +28,8 @@ function CartItems() {
     return (
         <div className='w-[1/3] p-5 lg:w-2/3  '>
 
-            {productItem.length>0 &&
-                (
+            {/* {productItem &&
+                ( */}
                     <div>
                                             <div className='w-full'>
                                                 <h2 className=' flex justify-center md:flex-none font-titleFont text-2xl'>Checkout Items</h2>
@@ -48,7 +48,7 @@ function CartItems() {
                                                                         className='text-xl text-gray-600 hover:text-amber-400 cursor-pointer duration-300'
                                                                     />
                                                                     <img 
-                                                                        className='w-32 h-32 object-cover rounded-br-2xl'
+                                                                        className='w-32 h-32 object-cover rounded-br-2xl  shadow-lg shadow-yellow-700 '
                                                                         src={item.image} 
                                                                         alt="prodImage" 
                                                                 />
@@ -99,7 +99,7 @@ function CartItems() {
                                                         ))
                                                     }
                                                     <button 
-                                                        onClick={()=>dispatch(resetCart(productItem))}
+                                                        onClick={()=>dispatch(resetCart())}
                                                         className='mx-auto md:ml-auto rounded-br-3xl bg-orange-500 text-white mt-8 py-1 px-6 hover:bg-yellow-400 duration-300'
                                                     >
                                                         CLEAR
@@ -115,9 +115,9 @@ function CartItems() {
                                                     </Link>
                                                 </div>
                     </div> 
-
-                )
-            }
+{/* 
+            //     )
+            // } */}
             
 
         </div>

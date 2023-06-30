@@ -29,6 +29,7 @@ function MainCarousel() {
      handleNextSlide()
     }, 5000);
     return () => clearTimeout(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //If its on the first index slide, goto last index slide,else goto prevCurrentIndex (currentIndex-1)
@@ -46,13 +47,13 @@ function MainCarousel() {
       setImageIndex(newSlide)
   }
   return(
-    <div id='carousel' className='w-full h-[800px] m-auto relative z-0 transition-all duration-1000'>
+    <div id='carousel' className='w-full h-[800px] lg:h-[900px] m-auto relative z-0 transition-all duration-1000'>
         <div 
           style={{backgroundImage: `url(${carouselData[currentIndex]})`}}
           className='w-full h-full bg-cover bg-no-repeat bg-center flex transition-all delay-300 duration-1000 ease-in-out animate-fade' 
         >  </div>
 
-        <div className='absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
+        <div className='absolute top-[50%] left-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
                         hover: transition-transform duration-300  hover:border-2  hover:border-white
         '>
             <BsChevronDoubleLeft
@@ -61,7 +62,7 @@ function MainCarousel() {
             />
         </div>
 
-        <div className='absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
+        <div className='absolute top-[50%] right-5 rounded-full py-2 bg-black/25 text-white cursor-pointer
                         hover: transition transform duration-300 hover:border-2 hover:border-white
         '>
             <BsChevronDoubleRight

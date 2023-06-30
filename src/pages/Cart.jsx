@@ -1,10 +1,10 @@
 import '../App.css'
 
 //React router Imports
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
-//React router Imports
+//React Imports
 import { useState, useEffect } from 'react';
 
 //Redux Imports
@@ -29,6 +29,9 @@ import axios from 'axios';
 
 function Cart() {
 
+  //Navigation 
+  const navigate = useNavigate()
+
   //Redux Data Imports
   const productItem = useSelector((state)=>state.arcadia.productData)
   const userData = useSelector((state)=> state.arcadia.userInfo)
@@ -43,11 +46,11 @@ function Cart() {
       let [totalPrice, setTotalPrice] = useState(0)
       const tax = 0.13
       const addOnTax = 1.13
-      let finalPrice = (addOnTax * totalPrice).toFixed(3)
+      let finalPrice = (addOnTax * totalPrice).toFixed(2)
 
     //Total Price
     useEffect(()=>{
-      setTotalPrice(productItem[0].price)
+     // setTotalPrice(productItem[0].price)
       let sum = 0
       productItem.map((item)=>{
           if(item.quantity >=1){
@@ -90,13 +93,13 @@ function Cart() {
     //   console.log(error)
     // }
     try{
-        const req = await axios.post('http://localhost:3000/pay',{
+         await axios.post('http://localhost:3000/pay',{
             amount: finalPrice*100,
             token: token,
 
         })
-        const res = req.json()
-        console.log(res)
+       // const res = await req.json()
+        //console.log(res)
     }
   catch(error){
         console.log(error)
@@ -104,6 +107,11 @@ function Cart() {
 
   }
   
+  const handleAfterPayment =()=>{
+    setTimeout(()=>{
+      navigate('/')
+    },2000)
+  }
 
 
   return (
@@ -144,7 +152,7 @@ function Cart() {
                             <p className='flex items-start gap-4 text-lg'>
                                 GST/HST 
                                 <span>
-                                 <i> {(tax*totalPrice).toFixed(3)}</i>
+                                 <i> {(tax*totalPrice).toFixed(2)}</i>
                                 </span>
                             </p> 
                         </div>
@@ -158,6 +166,7 @@ function Cart() {
                             className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'
                           >Continue Checkout</button>
 
+                          {/***SHOW STRIPE PAY ONCLICK TO CHECKOUT***/}
                           {stripePay &&
                             <div className='w-full flex mt-6 items-start justify-center'>
                               <StripeCheckout
@@ -181,7 +190,13 @@ function Cart() {
 
                                   
                               />
+                              <div>
+                              {handleAfterPayment}
+                              </div>
+                              
                             </div>
+
+                            
 
                           }
                     </div>
