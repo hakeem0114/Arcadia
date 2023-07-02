@@ -77,6 +77,7 @@ function User() {
                     name: user.displayName,
                     email: user.email,
                     image:user.photoURL,
+                    usedDiscount: false
                 }))
             )
             setTimeout(()=>{
@@ -122,6 +123,7 @@ function User() {
                         name: user.displayName,
                         email: user.email,
                         image:user.photoURL,
+                        usedDiscount: false
                     }))
                 )
                 setTimeout(()=>{

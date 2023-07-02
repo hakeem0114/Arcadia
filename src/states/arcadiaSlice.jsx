@@ -55,8 +55,15 @@ export const arcadiaSlice = createSlice({
         addUser:(state, action)=>{
             state.userInfo = action.payload
         },
-        removeUser:(state, action)=>{
+        removeUser:(state)=>{
             state.userInfo = null
+        },
+
+        /*****PRODUCT ITEM REDUCERS******/
+        changeDiscount:(state)=>{
+            //Filter & return items with exisiting in productData array
+             state.userInfo.usedDiscount = true
+            console.log(state.userInfo.usedDiscount)
         }
     },
 })
@@ -70,7 +77,8 @@ export const {
     incrementQTY,
     decrementQTY,
     addUser,
-    removeUser
+    removeUser,
+    changeDiscount
 } = arcadiaSlice.actions
 
 export default arcadiaSlice.reducer

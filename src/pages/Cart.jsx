@@ -8,7 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 
 //Redux Imports
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { changeDiscount } from '../states/arcadiaSlice';
 
 //Component Imports
 import CartItems from '../components/CartItems';
@@ -27,26 +28,60 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 
 
+
 function Cart() {
 
   //Navigation 
   const navigate = useNavigate()
+
+  //Redux
+  const dispatch = useDispatch()
 
   //Redux Data Imports
   const productItem = useSelector((state)=>state.arcadia.productData)
   const userData = useSelector((state)=> state.arcadia.userInfo)
  // console.log(userData)
  //console.log(productItem[0].price)
+ //console.log(userData.usedDiscount)
+
 
   //Stripe Pay
   const [stripePay, setStripePay] = useState(false)
 
 
-   //Pricing
+  //Discount
+  const discount  = 'FD1144'
+  const [applyDiscount, setApplyDiscount] = useState(0)
+  const [checkDiscount, setCheckDiscount] = useState(false)
+
+    //Use Selector to see if string is in user's store
+    const alreadyAppliedDiscount = userData.usedDiscount
+
+    const handleDiscount = (e)=>{
+      e.preventDefault()
+      let discountInput  = e.target.value
+
+      if(discountInput === discount && alreadyAppliedDiscount === false){
+        //correct discount & has not been applied
+        setCheckDiscount(true)
+        setApplyDiscount(20)
+
+        dispatch(
+          (changeDiscount())
+        )
+
+        //Store discount in User array in redux
+      }else{
+        //Wrong discount
+        setCheckDiscount(false)
+      }
+    }
+
+  //Pricing
       let [totalPrice, setTotalPrice] = useState(0)
       const tax = 0.13
       const addOnTax = 1.13
-      let finalPrice = (addOnTax * totalPrice).toFixed(2)
+      let finalPrice = ((addOnTax * totalPrice).toFixed(2) - applyDiscount)
 
     //Total Price
     useEffect(()=>{
@@ -57,10 +92,10 @@ function Cart() {
             sum += item.quantity * item.price
           }
       })
-      setTotalPrice(sum)
-      
+      setTotalPrice(sum)  
   },[productItem])
-  //console.log(totalPrice)
+  
+
   
   //Checkout
   const handleCheckout =()=>{
@@ -74,24 +109,6 @@ function Cart() {
 
   //Stripe API POST to sever for authentication
   const stripePayment = async (token)=>{
-    // try{
-    //   await fetch('http://localhost:3000/payment', {
-    //     method: 'POST',
-    //     headers: {
-    //       Accept: 'application.json',
-    //       "Content-Type": "application/x-www-form-urlencoded",
-    //       Authorization: "Bearer " + "pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ",
-    //     },
-    //     body:{
-    //       token: token,
-    //       amount: finalPrice*100,
-    //     } ,
-    //     cache: 'default'
-    //   })
-    // }
-    // catch(error){
-    //   console.log(error)
-    // }
     try{
          await axios.post('http://localhost:3000/pay',{
             amount: finalPrice*100,
@@ -104,9 +121,7 @@ function Cart() {
   catch(error){
         console.log(error)
     }
-
   }
-  
   const handleAfterPayment =()=>{
     setTimeout(()=>{
       navigate('/')
@@ -124,6 +139,7 @@ function Cart() {
                             md:gap-28 md:mx-5 md:py-20 lg:flex lg:mx-auto
                   '
                 >
+                  {/***CHECKOUT ITEMS*/}
                     <CartItems/>
 
 
@@ -141,6 +157,26 @@ function Cart() {
                               Subtotal 
                               <span className='font-bold text-lg'>${(totalPrice).toFixed(2)}</span>
                             </p>
+
+                            <p className='flex items-center gap-4 text-lg'>
+                                Discount 
+                                {!checkDiscount &&
+                                    (
+                                      <input 
+                                          onChange={handleDiscount}
+                                          className='rounded-br-xl text-center shadow-sm shadow-gray-500 focus:border-2 focus:shadow-yellow-700 hover:border-2 hover:after:shadow-yellow-700 active:border-2 active:shadow-yellow-700' 
+                                          type="text" name='text' placeholder='TEXT' 
+                                      />
+                                    )
+                                }
+
+                                {checkDiscount &&
+                                    (
+                                      <i className='text-yellow-400' >Applied</i>
+                                    )
+                                }
+
+                             </p>
 
                             <p className='flex items-start gap-4 text-lg'>
                                 Shipping 
