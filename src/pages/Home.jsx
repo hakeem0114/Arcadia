@@ -11,8 +11,6 @@ import { useEffect,useState } from 'react'
 //Router Imports
 import { useLoaderData } from 'react-router-dom'
 
-
-
 function Home() {
 
   //Carrying api data to /home path on load
@@ -25,11 +23,13 @@ function Home() {
     setProducts(cartData)
   },[cartData]) //Rerender when cardData api is called
   
-  // console.log(products)
+
+
   
   return (
     <div id='home'>
       <MainCarousel/>
+
       <Products
         key = {products._id} 
         products= {products}

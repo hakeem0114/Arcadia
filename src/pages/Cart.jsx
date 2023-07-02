@@ -40,9 +40,6 @@ function Cart() {
   //Redux Data Imports
   const productItem = useSelector((state)=>state.arcadia.productData)
   const userData = useSelector((state)=> state.arcadia.userInfo)
- // console.log(userData)
- //console.log(productItem[0].price)
- //console.log(userData.usedDiscount)
 
 
   //Stripe Pay
