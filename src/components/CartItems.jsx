@@ -51,7 +51,7 @@ function CartItems() {
                                                                         className='w-32 h-32 object-cover rounded-br-2xl  shadow-lg shadow-yellow-700 '
                                                                         src={item.image} 
                                                                         alt="prodImage" 
-                                                                />
+                                                                    />
                                                                 </div>
                                     
                                                                 <h2 className='w-52 text-center'>{item.title}</h2>

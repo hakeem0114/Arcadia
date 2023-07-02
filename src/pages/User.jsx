@@ -11,10 +11,17 @@ import { Link, useNavigate} from "react-router-dom";
 
 //Redux Imports
 import { useDispatch, useSelector } from 'react-redux';
+import {
+    addUser,
+    removeUser
+  } from '../states/arcadiaSlice'
 
 
 //React Imports
-import { useState } from 'react';
+//import { useState } from 'react';
+
+//Component Imports
+import Login from '../components/Login';
 
 //Firebase Imports
 import { getAuth, 
@@ -24,33 +31,23 @@ import { getAuth,
         GithubAuthProvider, 
 } from "firebase/auth";
 
-import {
-    addUser,
-    removeUser
-  } from '../states/arcadiaSlice'
+
+
 
 function User() {
 
-    //Sign in with email& password
-    //https://blog.logrocket.com/user-authentication-firebase-react-apps/
-
+    //User Info from Firebase to redux after login
     const userPostSave = useSelector((state) => state.arcadia.userInfo)
-  //  console.log(userPostSave)
-   // setCurrentUser(userPostSave)
     
     //Store firebase info to redux before refresh
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    //Firebase Google Setup
+    //Firebase Provider Setup
     const provider = new GoogleAuthProvider();
     const provider2 = new GithubAuthProvider();
     const auth = getAuth();
 
-    const [currUser, setCurrentUser]=useState()
-    
-    //console.log(currUser)
-    
     const handleGoogleLogin=(e)=>{
         e.preventDefault()
 
@@ -169,31 +166,36 @@ function User() {
 
   return (
       <div className='w-full flex flex-col items-center justify-center  py-20'>
-            {/***LOGIN FORM / REGISTER**/}
+           
+           
+            {/***LOGIN/SIGNUP**/}
             {!userPostSave  &&
                 (
-                    <div className='flex flex-col gap-10'>
-                                    <div className='w-full flex items-center justify-center'>
-                                        <div 
-                                            onClick={handleGithubLogin}
-                                            className='text-base w-60 h-12 tracking-wider border-[2px] border-gray-400 
-                                                        rounded-md flex items-center justify-center gap-2 hover:border-yellow-600
-                                                        cursor-pointer duration-300
-                                        '>
-                                            <img className='w-8' src={git} alt="google" />
-                                            <span className='text-sm text-gray-900'>Sign in with Git</span>
-                                        </div>
-                                    </div>
-                                    <div className='w-full flex items-center justify-center'>
-                                        <div 
-                                            onClick={handleGoogleLogin}
-                                            className='text-base w-60 h-12 tracking-wider border-[2px] border-gray-400 
-                                                        rounded-md flex items-center justify-center gap-2 hover:border-yellow-600
-                                                        cursor-pointer duration-300
-                                        '>
-                                            <img className='w-8' src={googleLogo} alt="google" />
-                                            <span className='text-sm text-gray-900'>Sign in with Google</span>
-                                        </div>
+                    <div className='w-full'>
+                                    <Login/>
+                                    <div className='flex flex-col gap-5'>
+                                                    <div className='w-full flex items-center justify-center'>
+                                                        <div 
+                                                            onClick={handleGithubLogin}
+                                                            className='text-base w-60 h-12 tracking-wider border-[2px] border-gray-400 
+                                                                        rounded-md flex items-center justify-center gap-2 hover:border-yellow-600
+                                                                        cursor-pointer duration-300
+                                                        '>
+                                                            <img className='w-8' src={git} alt="google" />
+                                                            <span className='text-sm text-gray-900'>Sign in with Git</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className='w-full flex items-center justify-center'>
+                                                        <div 
+                                                            onClick={handleGoogleLogin}
+                                                            className='text-base w-60 h-12 tracking-wider border-[2px] border-gray-400 
+                                                                        rounded-md flex items-center justify-center gap-2 hover:border-yellow-600
+                                                                        cursor-pointer duration-300
+                                                        '>
+                                                            <img className='w-8' src={googleLogo} alt="google" />
+                                                            <span className='text-sm text-gray-900'>Sign in with Google</span>
+                                                        </div>
+                                                    </div>
                                     </div>
                     </div>
                 )
@@ -201,13 +203,13 @@ function User() {
             }
 
 
-            {/**EXISTS/SIGN OUT**/}
+            {/**USER LOGGED IN/SIGN OUT**/}
             {userPostSave &&
                 (
                     <div className='flex flex-col gap-5'>
                         <div>
                                 <div className='max-h-screen m-10 flex flex-col justify-center items-center gap-5'>
-                                        <p  className='text-lg md:text-xl lg:text-2xl mt-10 uppercase font-bold text-orange-600 text-center'>Checkout our newsletter for a 10% discount code. <br/>Or view our catalogue BELOW!</p>
+                                        <p  className='text-lg md:text-xl lg:text-2xl mt-10 uppercase font-bold text-orange-600 text-center'>Checkout our newsletter for a discount code. <br/>Or view our catalogue BELOW!</p>
                                         <Link to='/'>
                                             <button className='text-lg mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'>
                                                 <span> < HiOutlineArrowLeft  size={30}/> </span>

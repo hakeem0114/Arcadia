@@ -55,7 +55,9 @@ function Cart() {
   const [checkDiscount, setCheckDiscount] = useState(false)
 
     //Use Selector to see if string is in user's store
-    const alreadyAppliedDiscount = userData.usedDiscount
+    if(userData){
+      const alreadyAppliedDiscount = userData.usedDiscount
+    }
 
     const handleDiscount = (e)=>{
       e.preventDefault()
@@ -164,8 +166,8 @@ function Cart() {
                                     (
                                       <input 
                                           onChange={handleDiscount}
-                                          className='rounded-br-xl text-center shadow-sm shadow-gray-500 focus:border-2 focus:shadow-yellow-700 hover:border-2 hover:after:shadow-yellow-700 active:border-2 active:shadow-yellow-700' 
-                                          type="text" name='text' placeholder='TEXT' 
+                                          className='rounded-br-xl text-center shadow-sm shadow-gray-500 focus:border-2 focus:outline-none focus:ring focus:shadow-yellow-700 hover:border-2 hover:after:shadow-yellow-700 active:ring active:shadow-yellow-700' 
+                                          type="text" name='text' placeholder='' 
                                       />
                                     )
                                 }
