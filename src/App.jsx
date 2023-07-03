@@ -48,7 +48,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={< PageLayout/>} >
 
-        <Route  path='/Arcadia' element={<Home/>} loader={productData} />
+        <Route  path='/Arcadia/' element={<Home/>} loader={productData} />
 
         <Route  path='/Arcadia/cart' element={<Cart/>} />
         <Route path='/Arcadia/product/:id' element={<Product/>} />
