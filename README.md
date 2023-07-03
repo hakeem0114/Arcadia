@@ -3,17 +3,15 @@
 
 A one-stop-shop for the stylish wear
 
-
-![Home2](./client/public/home2.png "Home2")
-
 ## App Features
 ![Home](./src/assets/readmeAssets/home.png "Home")
 Created a modern ecommerce UI with features below.
 
 
 Pop-up for Newsletter (React Modal)
-![modal](./src/assets/readmeAssets/modal.png "modal")
+
 ```
+  ![modal](./src/assets/readmeAssets/modal.png "modal")
   Pop-up to for newsletter. 
   Stops popping up after ~10 user visits or if they have already registered for it.
 ```
