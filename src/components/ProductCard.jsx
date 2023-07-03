@@ -48,7 +48,7 @@ function ProductCard(props) {
 
   //Navigate: React Router, gotoProductPage
   const gotoProduct = ()=>{ //Pass along clicked product state details to new path then useLocation to extract 
-    navigate(`/product/${idString}`,{
+    navigate(`/Arcadia/product/${idString}`,{
       state:{ item: props.product }
     })
   }

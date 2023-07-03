@@ -106,10 +106,12 @@ function Cart() {
     }
   }
 
+  //http://localhost:3000/pay
+
   //Stripe API POST to sever for authentication
   const stripePayment = async (token)=>{
     try{
-         await axios.post('http://localhost:3000/pay',{
+         await axios.post('https://arcadia-server.onrender.com',{
             amount: finalPrice*100,
             token: token,
 
@@ -254,7 +256,7 @@ function Cart() {
           (
             <div className='max-h-screen m-40 flex flex-col justify-center items-center gap-5'>
               <p  className='text-2xl mt-10 uppercase font-bold text-orange-600'>Your Shopping Cart is Empty. Check out exciting products BELOW!</p>
-              <Link to='/'>
+              <Link to='/Arcadia'>
                     <button className='text-lg mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'>
                         <span> < HiOutlineArrowLeft  size={30}/> </span>
 

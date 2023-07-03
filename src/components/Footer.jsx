@@ -52,7 +52,7 @@ function Footer() {
       '>
           {/***1st col: Website Info***/}
           <div className='flex flex-col'>
-                <Link to='/' className='transform duration-1000'>
+                <Link to='/Arcadia' className='transform duration-1000'>
                     <div className=" text-3xl font-bold text-white dark:text-white transform transition duration-200 hover:scale-[1.01] hover:cursor-pointer">
                           Arcadia <span className='line-through'>|||</span> 
                       </div>
@@ -91,13 +91,13 @@ function Footer() {
               <h2 className='text-2xl font-semibold text-white mb-4'>User Profile</h2>
 
               <div className='text-base flex flex-col gap-2'>
-                  <Link to='/user' className='transform duration-1000'>
+                  <Link to='/Arcadia/user' className='transform duration-1000'>
                       <p className='flex items-center gap-3 hover:text-white duration-300 cursor-pointer'>
                           <span> <HiUserCircle size={30}/> </span> <span >My Account</span>
                       </p>
                   </Link>
 
-                  <Link to='/cart' className='transform duration-1000'>
+                  <Link to='/Arcadia/cart' className='transform duration-1000'>
                       <p className='flex items-center gap-3 hover:text-white duration-300 cursor-pointer'>
                           <span> <FaStripe size={50}/> </span> <span>Checkout</span>
                       </p>

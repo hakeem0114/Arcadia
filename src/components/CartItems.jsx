@@ -105,7 +105,7 @@ function CartItems() {
                                                         CLEAR
                                                     </button>
                                     
-                                                    <Link to='/'>
+                                                    <Link to='/Arcadia'>
                                                         <button className='mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'>
                                                             <span>
                                                             < HiOutlineArrowLeft />

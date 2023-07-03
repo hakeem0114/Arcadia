@@ -97,7 +97,7 @@ const Login  = () => {
                         }))
                     )
                     setTimeout(()=>{
-                        navigate('/')
+                        navigate('/Arcadia')
                     },1500)
                 })
 

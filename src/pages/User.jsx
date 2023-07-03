@@ -78,7 +78,7 @@ function User() {
                 }))
             )
             setTimeout(()=>{
-                navigate('/')
+                navigate('/Arcadia')
             },3000)
             
         })
@@ -124,7 +124,7 @@ function User() {
                     }))
                 )
                 setTimeout(()=>{
-                    navigate('/')
+                    navigate('/Arcadia')
                 },3000)
 
 
@@ -210,7 +210,7 @@ function User() {
                         <div>
                                 <div className='max-h-screen m-10 flex flex-col justify-center items-center gap-5'>
                                         <p  className='text-lg md:text-xl lg:text-2xl mt-10 uppercase font-bold text-orange-600 text-center'>Checkout our newsletter for a discount code. <br/>Or view our catalogue BELOW!</p>
-                                        <Link to='/'>
+                                        <Link to='/Arcadia'>
                                             <button className='text-lg mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'>
                                                 <span> < HiOutlineArrowLeft  size={30}/> </span>
 
