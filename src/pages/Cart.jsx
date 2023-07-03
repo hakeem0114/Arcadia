@@ -214,14 +214,9 @@ function Cart() {
 
                                   description={`Payment amount = $${finalPrice}`}
                                   email={userData.email}
-                                 // currency="CAD"
 
-                                 
-
-                                  
-
-                                  // shippingAddress
-                                  // allowRememberMe
+                                  shippingAddress
+                                  allowRememberMe
 
                                   
                               />

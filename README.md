@@ -1,123 +1,137 @@
 
-# Arcadia (IN PROGRESS)
+# Arcadia (Ecommerce Website)
 
 A one-stop-shop for the stylish wear
 
-## Packages, Libraries & APIs Used
 
-React Icons
+![Home2](./client/public/home2.png "Home2")
+
+## App Features
+![Home](./src/assets/readmeAssets/home.png "Home")
+Created a modern ecommerce UI with features below.
+
+
+Pop-up for Newsletter (React Modal)
+![modal](./src/assets/readmeAssets/modal.png "modal")
 ```
-    dddf
+  Pop-up to for newsletter. 
+  Stops popping up after ~10 user visits or if they have already registered for it.
 ```
 
-React Router
+Newsletter & Discount code
+![news](./src/assets/readmeAssets/email.png "news")
 ```
-Router to manage client routes
+  Used email.js to send email, which icludes a one time $20 discount code per user.
+  Collects emails in firebase (scalability)
 ```
-Store Data
+
+Cart & Stripe
+![cart](./src/assets/readmeAssets/cart.png "cart")
+![product](./src/assets/readmeAssets/product.png "product")
+![checkout](./src/assets/readmeAssets/checkout.png "checkout")
 ```
-https://fakestoreapi.reactbd.com/
+  Product items with sale prices & categories.
+  Payment through Stripe.
 ```
-Redux Tookit, Persist & Devtools 
+
+User Authentication & Authorization
+![user](./src/assets/readmeAssets/user.png "user")
 ```
+  Email, google & github login & signout with firebase.
+```
+
+## Packages, Libraries, Techonolgies & APIs Used
+
+Icons
+```
+    React Icons, icon8 & heroIcons
+```
+
+Routing
+```
+React router
+```
+
+APIs
+```
+Fake store API for json products. Axios for handling http requests from node.js 
+```
+
+State management
+```
+Redux Tookit, Persist & Devtools.
+
 Rather than setting up & connecting the state management and then praying that it works, redux devtools is as critical as the Postman & chrome devtools.
-Persist to store cache (redux store payload-> states -> initialValues & action to mutate with action in reducers) on user's local storage. Keep states on browser refresh
+
+Persist to store cache (redux store payload-> states -> initialValues & action to mutate with action in reducers) on user's local storage. 
+Keeps states on browser refresh on unencrypted async storage on React native's store
 ```
 
-React Toastify
+Notifications
 ```
-Handle notifications
-```
-
-Firebase
-```
-    Stores user info for authentication & authorization
+React Toastify to handle notifications
 ```
 
-react-stripe-checkout
+Storage 
 ```
-    Makes it easy to steal people's money
-```
-
-## Technologies Used
-
-TailwindCss
-```
-  
+    Firebase to stores user info for authentication & authorization 
 ```
 
-## ERD Diagrams
-
-Introduction Page
+Payments
 ```
-  Although my project "MySymposium" worked perfectly on localhost, the client-side rendering after deploying the backend node.js server was occasionally slow. 
-  Making on introduction page to let the end-user wait for the store to load is something I felt was need in my next full-stack application (this project).
-
-  Get loading priority & renders the store before the welcome icon pops up
+    Stripe to handle payments with auth in node.js.
+    Makes it easy to steal people's money.
 ```
 
+## Main programs used
 
-Firebase Storage, Authentication & Authorization
-```http
-  Test
-```
+TailwindCss, React, Node, Express 
 
-#### Get all items
-
-## Acknowledgements
-
-
-## Contributing
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
-
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
-
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
 
 
 ## Lessons Learned
 
-What did you learn while building this project? 
+Refactoring
+```
+  Did not account for all edge cases with the redux reducers as I added more features to the project like the discount, modals & tax.
+  Had to revise the reducers & states multiple times. I always create flowcharts & a sketch mock-up of what I want my project to be 
+  however, it would be best to compile all the resources online of all the features I want to implement before I begin.
+  Would save me a lot more time.
 
-What challenges did you face and how did you overcome them?
+```
 
+Stripe
+```
+  When testing the server with simple http request with POSTMAN, it worked until I tried to make payments through the UI.
+  I tried the in-build resource fetch API instead of axios, with a bearer & stripe token from the UI but it not work.
+  Also solutions included specified the which domains could make requests to the server but that also failed. 
+
+  I knew I was getting close to the solution when the error on chrome devtool went from 'Network error' to 'Network Refused'.
+  This told be that it was a cors error, that made STRIPE to block the authorization. The solution was to explicitly allow
+  domains to make requests '*' & a header for the 'POST' request. 
+
+    //Force cors & stripe error
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Headers', 'POST');
+
+```
 
 ## Run Locally
 
-Clone the project
+Clone the project. Add environment variable for STRIPE & public API keys for email.js
 
-```bash
-  git clone https://hakeem0114/arcadia
+Client
 ```
-
-Go to the project directory
-
-```bash
-  cd arcadia
-```
-
-Install dependencies
-
-```bash
-  npm i
-```
-
-Start the server
-
-```bash
   npm run dev
 ```
 
+Client
+```
+  nodemon index.js
+```
+
+# Server
+Deployed on Render
+
+https://github.com/hakeem0114/Arcadia_server

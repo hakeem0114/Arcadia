@@ -124,7 +124,7 @@ function MainCarousel() {
                                   font-bold text-2xl
                                   transition duration-300
                                 '> SIGNUP NOW FOR A 10% DISCOUNT</h1>
-                                <i className='underline underline-offset-4 text-amber-400 transition duration-300 hover:cursor-pointer'><span href="#products">Check out the new arrivals</span ></i>
+                                <i className='underline underline-offset-4 text-amber-400 transition duration-300'><span href="#products">Check out the new arrivals</span ></i>
                             </div>
                         
                     </div>

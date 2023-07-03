@@ -35,7 +35,7 @@ const Modal = () => {
   return (
     <div className="">
         {trackModal &&(
-            <section className="z-50 sticky top-0 bg-gray-900 w-1/3  mx-auto my-2 ">
+            <section className=" transition ease-in-out delay-150 duration-300      z-50 sticky top-0 bg-gray-900 w-1/3  mx-auto my-2 ">
                 <div className="py-8 px-4 max-w-screen-xl lg:py-16 lg:px-6 border-[2px] border-neutral-600 shadow-lg shadow-orange-500">
 
                     {/**CLOSE MODAL BUTTON**/}
