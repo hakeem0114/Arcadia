@@ -5,41 +5,43 @@ A one-stop-shop for the stylish wear
 
 ## App Features
 ![Home](./src/assets/readmeAssets/home.png "Home")
-Created a modern ecommerce UI with features below.
 
 
-Pop-up for Newsletter (React Modal)
+### Pop-up for Newsletter (React Modal)
+![modal](./src/assets/readmeAssets/modal.png "modal")
 
 ```
-  ![modal](./src/assets/readmeAssets/modal.png "modal")
   Pop-up to for newsletter. 
   Stops popping up after ~10 user visits or if they have already registered for it.
 ```
 
-Newsletter & Discount code
+### Newsletter & Discount code
 ![news](./src/assets/readmeAssets/email.png "news")
+
 ```
   Used email.js to send email, which icludes a one time $20 discount code per user.
   Collects emails in firebase (scalability)
 ```
 
-Cart & Stripe
+### Cart & Stripe
 ![cart](./src/assets/readmeAssets/cart.png "cart")
 ![product](./src/assets/readmeAssets/product.png "product")
 ![checkout](./src/assets/readmeAssets/checkout.png "checkout")
+
 ```
   Product items with sale prices & categories.
   Payment through Stripe.
 ```
 
-User Authentication & Authorization
+### User Authentication & Authorization
 ![user](./src/assets/readmeAssets/user.png "user")
+
 ```
   Email, google & github login & signout with firebase.
 ```
 
-## Packages, Libraries, Techonolgies & APIs Used
 
+## Packages, Libraries, Techonolgies & APIs Used
 Icons
 ```
     React Icons, icon8 & heroIcons
