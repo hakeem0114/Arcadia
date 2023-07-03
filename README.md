@@ -37,7 +37,7 @@ A one-stop-shop for the stylish wear
 ![user](./src/assets/readmeAssets/user.png "user")
 
 ```
-  Email, google & github login & signout with firebase.
+  Email, google & github login. Signout with firebase.
 ```
 
 

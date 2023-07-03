@@ -121,11 +121,11 @@ function Cart() {
         console.log(error)
     }
   }
-  const handleAfterPayment =()=>{
-    setTimeout(()=>{
-      navigate('/')
-    },2000)
-  }
+  // const handleAfterPayment =()=>{
+  //   setTimeout(()=>{
+  //     navigate('/')
+  //   },2000)
+  // }
 
 
   return (
@@ -204,25 +204,27 @@ function Cart() {
                           {/***SHOW STRIPE PAY ONCLICK TO CHECKOUT***/}
                           {stripePay &&
                             <div className='w-full flex mt-6 items-start justify-center'>
-                              <StripeCheckout
-                                 
-                                  stripeKey='pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ'
-                                  token={stripePayment}
-                                  name='Arcadia E-Pay'
-                                  amount={(finalPrice)*100}
-                                  label='Pay to Arcadia'
-
-                                  description={`Payment amount = $${finalPrice}`}
-                                  email={userData.email}
-
-                                  shippingAddress
-                                  allowRememberMe
-
+                                <StripeCheckout
                                   
-                              />
-                              <div>
-                              {handleAfterPayment}
-                              </div>
+                                  //  stripeKey='pk_test_51NNpYuL3c9Qh3QycDJu2J4mp368bAZ4qjaK7kHWmSC074kzCRUx5UpY3RUPEPXtnKL3E6zOMfHitMM9rMty9eb1j00d0ISxDLZ'
+                                  stripeKey='pk_live_51NNpYuL3c9Qh3QyccYiCHTTsa8vEN4MzcgJ0txoPwzkw92wp4PAkQtikq19UwMUpqFDwkN7zJE0x4GzJZJkJG14m00uHvyPRQr'
+                                    token={stripePayment}
+                                    name='Arcadia E-Pay'
+                                    amount={(finalPrice)*100}
+                                    label='Pay to Arcadia'
+
+                                    description={`Payment amount = $${finalPrice}`}
+                                    email={userData.email}
+
+                                    shippingAddress
+                                    allowRememberMe
+
+                                    
+                                />
+                                
+                                {/* <div>
+                                {handleAfterPayment}
+                                </div> */}
                               
                             </div>
 
