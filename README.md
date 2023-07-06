@@ -80,7 +80,6 @@ Storage
 Payments
 ```
     Stripe to handle payments with auth in node.js.
-    Makes it easy to steal people's money.
 ```
 
 ## Main programs used

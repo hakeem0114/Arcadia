@@ -28,7 +28,7 @@ import {
 //Api Imports
 import productData from './api/productData'
 
-
+//console.log(productData.id)
 
 /********* RENDERING *********/
 
