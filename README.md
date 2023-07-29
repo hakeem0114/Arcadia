@@ -27,7 +27,7 @@ A one-stop-shop for the stylish wear
 ![cart](./src/assets/readmeAssets/cart.png "cart")
 ![product](./src/assets/readmeAssets/product.png "product")
 ![checkout](./src/assets/readmeAssets/checkout.png "checkout")
-
+![stripe](./src/assets/readmeAssets/stripe.png "stripe")
 ```
   Product items with sale prices & categories.
   Payment through Stripe.

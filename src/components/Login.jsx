@@ -1,15 +1,17 @@
 /* eslint-disable react/no-unescaped-entities */
 
+/**EMAIL & PASSWORD FORM**/
+
 import '../App.css'
 
 //React router Imports
-import { Link, useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 //React Imports
 import { useState } from 'react';
 
 //Redux Imports
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import {
     addUser,
   } from '../states/arcadiaSlice'
@@ -20,6 +22,8 @@ import { getAuth,
     signInWithEmailAndPassword,
 } from "firebase/auth";
 
+//React Toastify for notifications Imports
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login  = () => {
 
@@ -70,11 +74,16 @@ const Login  = () => {
             .then((userCredential) => {
               // Signed in 
               const user = userCredential.user;
+            
+              if(user){
+                toast.success('Registered')
+              }
+              
              })
             .catch((error) => {
               const errorCode = error.code;
               const errorMessage = error.message;
-              console.log(error)
+                
             });
         }
 
@@ -96,15 +105,25 @@ const Login  = () => {
                             usedDiscount: false
                         }))
                     )
+
+                    if(user){
+                        toast.success('Sucess')
+                      }
+
                     setTimeout(()=>{
                         navigate('/Arcadia')
                     },1500)
                 })
 
             .catch((error) => {
-              const errorCode = error.code;
+              //const errorCode = error.code;
               const errorMessage = error.message;
-              console.log(error)
+                if(errorMessage.includes('user-not-found')){
+                    toast.error('Invalid Email')
+                }
+                if(errorMessage.includes('wrong-password')){
+                    toast.error('Invalid Password')
+                }
             });
         }
 
@@ -238,7 +257,18 @@ const Login  = () => {
                 )
 
             }
-
+                    <ToastContainer
+                      position="top-right"
+                      autoClose={500}
+                      hideProgressBar={true}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="dark"
+                    />
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import '../App.css'
 
 //React router Imports
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 //React Imports
@@ -30,9 +30,6 @@ import axios from 'axios';
 
 
 function Cart() {
-
-  //Navigation 
-  const navigate = useNavigate()
 
   //Redux
   const dispatch = useDispatch()
@@ -123,12 +120,6 @@ function Cart() {
         console.log(error)
     }
   }
-  // const handleAfterPayment =()=>{
-  //   setTimeout(()=>{
-  //     navigate('/')
-  //   },2000)
-  // }
-
 
   return (
       <div>
