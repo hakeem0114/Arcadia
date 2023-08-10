@@ -38,7 +38,7 @@ function Header() {
     <nav id='header' className=' w-full h-20 bg-white border-b-[2px] border-b-gray-800 opacity-95 flex justify-between  sticky z-50 top-0' >
           <div className='w-4/5 m-auto flex justify-between items-center' >
               <Link to='/Arcadia' className='transform duration-1000'>
-                <div id='home' className=" text-3xl font-bold text-gray-900 dark:text-white transform transition duration-300 hover:scale-110 hover:cursor-pointer  hover:text-amber-600">
+                <div id='home' className=" text-3xl font-bold text-slate-900 dark:text-white transform transition duration-300 hover:scale-110 hover:cursor-pointer  hover:text-amber-600">
                   Arcadia <span className='line-through'>|||</span> 
                 </div>
               </Link>
